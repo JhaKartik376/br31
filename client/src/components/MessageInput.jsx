@@ -1,0 +1,71 @@
+import { useState } from 'react'
+import useChatStore from '../store/useChatStore'
+import { sendMessage } from '../services/socket'
+
+function MessageInput() {
+  const [input, setInput] = useState('')
+  const isStreaming = useChatStore((state) => state.isStreaming)
+  const isConnected = useChatStore((state) => state.isConnected)
+  const addMessage = useChatStore((state) => state.addMessage)
+
+  const handleSend = () => {
+    const text = input.trim()
+    if (!text || isStreaming || !isConnected) return
+
+    addMessage({
+      id: crypto.randomUUID(),
+      role: 'user',
+      content: text,
+      timestamp: Date.now(),
+    })
+
+    sendMessage(text)
+    setInput('')
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSend()
+    }
+  }
+
+  return (
+    <div className="border-t border-white/[0.06] bg-[#12121a]/40 p-4">
+      <div className="flex items-center gap-3 max-w-3xl mx-auto">
+        <div className="flex-1 relative">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={isStreaming}
+            placeholder={
+              !isConnected
+                ? 'Waiting for connection...'
+                : isStreaming
+                ? 'AI is responding...'
+                : 'Message AetherLink...'
+            }
+            className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 outline-none focus:border-[#6c5ce7]/40 focus:ring-1 focus:ring-[#6c5ce7]/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+          />
+        </div>
+        <button
+          onClick={handleSend}
+          disabled={isStreaming || !input.trim() || !isConnected}
+          className="bg-[#6c5ce7] hover:bg-[#5a4bd6] disabled:bg-white/[0.04] disabled:text-white/15 disabled:border-white/[0.06] text-white rounded-xl px-4 py-3 text-sm font-medium transition-all shadow-lg shadow-[#6c5ce7]/20 hover:shadow-[#6c5ce7]/30 disabled:shadow-none flex items-center gap-2 disabled:cursor-not-allowed border border-transparent disabled:border"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+          </svg>
+          Send
+        </button>
+      </div>
+      <p className="text-center text-[10px] text-white/10 mt-2.5 font-mono">
+        Powered by Ollama · Running locally
+      </p>
+    </div>
+  )
+}
+
+export default MessageInput
