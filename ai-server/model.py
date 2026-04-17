@@ -4,7 +4,10 @@ import json
 import os
 from typing import AsyncGenerator
 
+from dotenv import load_dotenv
 import httpx
+
+load_dotenv()
 
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
