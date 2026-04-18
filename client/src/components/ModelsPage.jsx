@@ -46,10 +46,10 @@ function AnimatedBar({ label, value, max, color, delay = 0 }) {
   return (
     <div ref={ref} className="space-y-1.5">
       <div className="flex items-center justify-between">
-        <span className="text-xs text-white/60">{label}</span>
-        <span className="text-xs text-white/40 font-mono">{value}/{max}</span>
+        <span className="text-xs text-gray-500">{label}</span>
+        <span className="text-xs text-gray-400 font-mono">{value}/{max}</span>
       </div>
-      <div className="h-2 rounded-full bg-white/[0.04] overflow-hidden">
+      <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
         <div
           className={`h-full rounded-full transition-all duration-1000 ease-out ${color}`}
           style={{ width: `${width}%` }}
@@ -77,7 +77,7 @@ function RadialChart({ percentage, label, sublabel, color }) {
     <div ref={ref} className="flex flex-col items-center gap-2">
       <div className="relative w-20 h-20 md:w-24 md:h-24">
         <svg className="w-full h-full -rotate-90" viewBox="0 0 80 80">
-          <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="6" />
+          <circle cx="40" cy="40" r="36" fill="none" stroke="rgb(243,244,246)" strokeWidth="6" />
           <circle
             cx="40" cy="40" r="36" fill="none"
             stroke={color} strokeWidth="6" strokeLinecap="round"
@@ -87,12 +87,12 @@ function RadialChart({ percentage, label, sublabel, color }) {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-sm md:text-base font-semibold text-white/80">{drawn ? percentage : 0}%</span>
+          <span className="text-sm md:text-base font-semibold text-gray-800">{drawn ? percentage : 0}%</span>
         </div>
       </div>
       <div className="text-center">
-        <p className="text-xs font-medium text-white/70">{label}</p>
-        <p className="text-[10px] text-white/30">{sublabel}</p>
+        <p className="text-xs font-medium text-gray-700">{label}</p>
+        <p className="text-[10px] text-gray-400">{sublabel}</p>
       </div>
     </div>
   )
@@ -263,7 +263,7 @@ const comparison = [
 function ModelCard({ model, index }) {
   return (
     <div
-      className="animate-fade-in-up opacity-0 group p-4 md:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-300"
+      className="animate-fade-in-up opacity-0 group p-4 md:p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       {/* Header */}
@@ -273,13 +273,13 @@ function ModelCard({ model, index }) {
             <div className={`w-5 h-5 rounded-md bg-gradient-to-br ${model.color}`} />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">{model.name}</h3>
-            <p className="text-[10px] text-white/30">{model.provider}</p>
+            <h3 className="text-sm font-semibold text-gray-900">{model.name}</h3>
+            <p className="text-[10px] text-gray-400">{model.provider}</p>
           </div>
         </div>
         <div className="flex gap-1">
           {model.sizes.map((s) => (
-            <span key={s} className="text-[9px] px-1.5 py-0.5 rounded-md bg-white/[0.04] text-white/40 border border-white/[0.06]">
+            <span key={s} className="text-[9px] px-1.5 py-0.5 rounded-md bg-gray-100 text-gray-500 border border-gray-200">
               {s}
             </span>
           ))}
@@ -287,25 +287,25 @@ function ModelCard({ model, index }) {
       </div>
 
       {/* Description */}
-      <p className="text-xs text-white/40 leading-relaxed mb-3">{model.desc}</p>
+      <p className="text-xs text-gray-500 leading-relaxed mb-3">{model.desc}</p>
 
       {/* Stats */}
       <div className="grid grid-cols-2 gap-2 mb-3">
         <div className="space-y-1">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-white/30">Speed</span>
-            <span className="text-[10px] text-white/50 font-mono">{model.speed}/10</span>
+            <span className="text-[10px] text-gray-400">Speed</span>
+            <span className="text-[10px] text-gray-500 font-mono">{model.speed}/10</span>
           </div>
-          <div className="h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+          <div className="h-1.5 rounded-full bg-gray-100 overflow-hidden">
             <div className={`h-full rounded-full bg-gradient-to-r ${model.color}`} style={{ width: `${model.speed * 10}%` }} />
           </div>
         </div>
         <div className="space-y-1">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-white/30">Quality</span>
-            <span className="text-[10px] text-white/50 font-mono">{model.quality}/10</span>
+            <span className="text-[10px] text-gray-400">Quality</span>
+            <span className="text-[10px] text-gray-500 font-mono">{model.quality}/10</span>
           </div>
-          <div className="h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+          <div className="h-1.5 rounded-full bg-gray-100 overflow-hidden">
             <div className={`h-full rounded-full bg-gradient-to-r ${model.color}`} style={{ width: `${model.quality * 10}%` }} />
           </div>
         </div>
@@ -315,12 +315,12 @@ function ModelCard({ model, index }) {
       <div className="flex items-center justify-between">
         <div className="flex gap-1 flex-wrap">
           {model.tags.map((tag) => (
-            <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#6c5ce7]/10 text-[#a29bfe]/70 border border-[#6c5ce7]/10">
+            <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#6c5ce7]/5 text-[#6c5ce7]/70 border border-[#6c5ce7]/10">
               {tag}
             </span>
           ))}
         </div>
-        <span className="text-[10px] text-white/25 font-mono flex-shrink-0 ml-2">{model.memory}</span>
+        <span className="text-[10px] text-gray-400 font-mono flex-shrink-0 ml-2">{model.memory}</span>
       </div>
     </div>
   )
@@ -335,43 +335,43 @@ export default function ModelsPage() {
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] md:w-[800px] h-[300px] md:h-[400px] bg-[#6c5ce7]/[0.06] rounded-full blur-[100px] md:blur-[150px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] md:w-[800px] h-[300px] md:h-[400px] bg-[#6c5ce7]/[0.04] rounded-full blur-[100px] md:blur-[150px]" />
         </div>
 
         <div className="relative px-4 md:px-8 pt-8 md:pt-12 pb-6 md:pb-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="animate-fade-in-up opacity-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#6c5ce7]/10 border border-[#6c5ce7]/20 text-[10px] md:text-xs text-[#a29bfe] mb-4 md:mb-5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#6c5ce7]/5 border border-[#6c5ce7]/10 text-[10px] md:text-xs text-[#6c5ce7] mb-4 md:mb-5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#6c5ce7] animate-pulse" />
                 Open Source AI Models
               </span>
             </div>
-            <h1 className="animate-fade-in-up opacity-0 delay-100 text-2xl md:text-4xl font-bold text-white tracking-tight mb-3 md:mb-4">
+            <h1 className="animate-fade-in-up opacity-0 delay-100 text-2xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3 md:mb-4">
               Run <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6c5ce7] to-[#a29bfe]">Any Model</span>, Anywhere
             </h1>
-            <p className="animate-fade-in-up opacity-0 delay-200 text-sm md:text-base text-white/35 max-w-xl mx-auto leading-relaxed mb-8 md:mb-10">
+            <p className="animate-fade-in-up opacity-0 delay-200 text-sm md:text-base text-gray-500 max-w-xl mx-auto leading-relaxed mb-8 md:mb-10">
               BR31 works with every model Ollama supports. From tiny 0.8B models on laptops to massive 70B models on GPU servers — pick what fits your hardware.
             </p>
 
             {/* Animated stats */}
             <div className="animate-fade-in-up opacity-0 delay-300 grid grid-cols-3 gap-3 md:gap-6 max-w-md mx-auto">
-              <div className="p-3 md:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <div className="p-3 md:p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
                 <div className="text-xl md:text-3xl font-bold text-[#a29bfe] mb-0.5">
                   <AnimatedNumber target={50} suffix="+" />
                 </div>
-                <div className="text-[10px] md:text-xs text-white/30">Models</div>
+                <div className="text-[10px] md:text-xs text-gray-400">Models</div>
               </div>
-              <div className="p-3 md:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                <div className="text-xl md:text-3xl font-bold text-emerald-400 mb-0.5">
+              <div className="p-3 md:p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                <div className="text-xl md:text-3xl font-bold text-emerald-500 mb-0.5">
                   <AnimatedNumber target={100} suffix="%" />
                 </div>
-                <div className="text-[10px] md:text-xs text-white/30">Private</div>
+                <div className="text-[10px] md:text-xs text-gray-400">Private</div>
               </div>
-              <div className="p-3 md:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                <div className="text-xl md:text-3xl font-bold text-amber-400 mb-0.5">
+              <div className="p-3 md:p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                <div className="text-xl md:text-3xl font-bold text-amber-500 mb-0.5">
                   $<AnimatedNumber target={0} />
                 </div>
-                <div className="text-[10px] md:text-xs text-white/30">Cost</div>
+                <div className="text-[10px] md:text-xs text-gray-400">Cost</div>
               </div>
             </div>
           </div>
@@ -382,8 +382,8 @@ export default function ModelsPage() {
       <div className="px-4 md:px-8 py-6 md:py-10">
         <div className="max-w-4xl mx-auto">
           <div className="mb-6 md:mb-8">
-            <h2 className="text-lg md:text-2xl font-semibold text-white/90 mb-1.5">Compatible Models</h2>
-            <p className="text-xs md:text-sm text-white/35">Every model here works out of the box with BR31 via Ollama.</p>
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5">Compatible Models</h2>
+            <p className="text-xs md:text-sm text-gray-500">Every model here works out of the box with BR31 via Ollama.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
@@ -392,39 +392,39 @@ export default function ModelsPage() {
             ))}
           </div>
 
-          <div className="mt-4 p-3 md:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center">
-            <p className="text-xs text-white/30">
-              + dozens more on <a href="https://ollama.ai/library" target="_blank" rel="noopener noreferrer" className="text-[#a29bfe] hover:underline">ollama.ai/library</a>
+          <div className="mt-4 p-3 md:p-4 rounded-xl bg-white border border-gray-100 shadow-sm text-center">
+            <p className="text-xs text-gray-500">
+              + dozens more on <a href="https://ollama.ai/library" target="_blank" rel="noopener noreferrer" className="text-[#6c5ce7] hover:underline">ollama.ai/library</a>
             </p>
           </div>
         </div>
       </div>
 
       {/* Benefits Section */}
-      <div className="px-4 md:px-8 py-6 md:py-10 border-t border-white/[0.04]">
+      <div className="px-4 md:px-8 py-6 md:py-10 border-t border-gray-100">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-lg md:text-2xl font-semibold text-white/90 mb-1.5">Why Local AI?</h2>
-            <p className="text-xs md:text-sm text-white/35 max-w-md mx-auto">The case for running models on your own hardware instead of renting from cloud APIs.</p>
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5">Why Local AI?</h2>
+            <p className="text-xs md:text-sm text-gray-500 max-w-md mx-auto">The case for running models on your own hardware instead of renting from cloud APIs.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {benefits.map((b, i) => (
               <div
                 key={b.title}
-                className="animate-fade-in-up opacity-0 p-5 md:p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.03] transition-all"
+                className="animate-fade-in-up opacity-0 p-5 md:p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#6c5ce7]/10 flex items-center justify-center flex-shrink-0 text-[#a29bfe]">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#6c5ce7]/5 flex items-center justify-center flex-shrink-0 text-[#6c5ce7]">
                     {b.icon}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1.5">
-                      <h3 className="text-sm font-semibold text-white/80">{b.title}</h3>
-                      <span className="text-lg md:text-xl font-bold text-[#a29bfe]">{b.stat}{b.statSuffix}</span>
+                      <h3 className="text-sm font-semibold text-gray-800">{b.title}</h3>
+                      <span className="text-lg md:text-xl font-bold text-[#6c5ce7]">{b.stat}{b.statSuffix}</span>
                     </div>
-                    <p className="text-xs text-white/35 leading-relaxed">{b.desc}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">{b.desc}</p>
                   </div>
                 </div>
               </div>
@@ -434,33 +434,33 @@ export default function ModelsPage() {
       </div>
 
       {/* Comparison Section */}
-      <div className="px-4 md:px-8 py-6 md:py-10 border-t border-white/[0.04]">
+      <div className="px-4 md:px-8 py-6 md:py-10 border-t border-gray-100">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-lg md:text-2xl font-semibold text-white/90 mb-1.5">BR31 vs Cloud APIs</h2>
-            <p className="text-xs md:text-sm text-white/35">How local-first AI compares to services like ChatGPT, Claude API, etc.</p>
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5">BR31 vs Cloud APIs</h2>
+            <p className="text-xs md:text-sm text-gray-500">How local-first AI compares to services like ChatGPT, Claude API, etc.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             {/* Bar chart */}
-            <div className="p-5 md:p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+            <div className="p-5 md:p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
               <div className="flex items-center gap-4 mb-5">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-sm bg-[#6c5ce7]" />
-                  <span className="text-[10px] text-white/50">BR31</span>
+                  <span className="text-[10px] text-gray-500">BR31</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-sm bg-white/20" />
-                  <span className="text-[10px] text-white/50">Cloud APIs</span>
+                  <div className="w-2.5 h-2.5 rounded-sm bg-gray-300" />
+                  <span className="text-[10px] text-gray-500">Cloud APIs</span>
                 </div>
               </div>
               <div className="space-y-4">
                 {comparison.map((item, i) => (
                   <div key={item.feature} className="space-y-2">
-                    <span className="text-xs text-white/50">{item.feature}</span>
+                    <span className="text-xs text-gray-500">{item.feature}</span>
                     <div className="space-y-1">
                       <AnimatedBar label="" value={item.br31} max={10} color="bg-gradient-to-r from-[#6c5ce7] to-[#a29bfe]" delay={i * 150} />
-                      <AnimatedBar label="" value={item.cloud} max={10} color="bg-white/20" delay={i * 150 + 75} />
+                      <AnimatedBar label="" value={item.cloud} max={10} color="bg-gray-200" delay={i * 150 + 75} />
                     </div>
                   </div>
                 ))}
@@ -468,8 +468,8 @@ export default function ModelsPage() {
             </div>
 
             {/* Radial charts */}
-            <div className="p-5 md:p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-              <h3 className="text-sm font-medium text-white/60 mb-6 text-center">Performance Metrics</h3>
+            <div className="p-5 md:p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+              <h3 className="text-sm font-medium text-gray-500 mb-6 text-center">Performance Metrics</h3>
               <div className="grid grid-cols-2 gap-6">
                 <RadialChart percentage={100} label="Data Privacy" sublabel="Fully local" color="#6c5ce7" />
                 <RadialChart percentage={95} label="Uptime" sublabel="No cloud dependency" color="#10b981" />
@@ -482,33 +482,33 @@ export default function ModelsPage() {
       </div>
 
       {/* Architecture Benefit */}
-      <div className="px-4 md:px-8 py-6 md:py-10 border-t border-white/[0.04]">
+      <div className="px-4 md:px-8 py-6 md:py-10 border-t border-gray-100">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-lg md:text-2xl font-semibold text-white/90 mb-1.5">How It All Connects</h2>
-            <p className="text-xs md:text-sm text-white/35">A simple, powerful architecture that keeps you in control.</p>
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5">How It All Connects</h2>
+            <p className="text-xs md:text-sm text-gray-500">A simple, powerful architecture that keeps you in control.</p>
           </div>
 
-          <div className="p-5 md:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+          <div className="p-5 md:p-8 rounded-2xl bg-white border border-gray-100 shadow-sm">
             <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
               {[
-                { label: 'Your Device', sub: 'Browser / Phone / Tablet', icon: '🌐', color: 'from-blue-500/20 to-blue-600/20' },
+                { label: 'Your Device', sub: 'Browser / Phone / Tablet', icon: '🌐', color: 'from-blue-50 to-blue-100' },
                 { label: '', icon: '→', color: '' },
-                { label: 'BR31', sub: 'WebSocket Bridge', icon: '🔗', color: 'from-[#6c5ce7]/20 to-purple-600/20' },
+                { label: 'BR31', sub: 'WebSocket Bridge', icon: '🔗', color: 'from-[#6c5ce7]/5 to-purple-50' },
                 { label: '', icon: '→', color: '' },
-                { label: 'Your Server', sub: 'GPU / Desktop / Cloud', icon: '🖥️', color: 'from-emerald-500/20 to-emerald-600/20' },
+                { label: 'Your Server', sub: 'GPU / Desktop / Cloud', icon: '🖥️', color: 'from-emerald-50 to-emerald-100' },
                 { label: '', icon: '→', color: '' },
-                { label: 'AI Model', sub: 'Ollama / Groq', icon: '🧠', color: 'from-amber-500/20 to-amber-600/20' },
+                { label: 'AI Model', sub: 'Ollama / Groq', icon: '🧠', color: 'from-amber-50 to-amber-100' },
               ].map((item, i) => (
                 <div key={i} className={item.label ? 'flex-1 w-full md:w-auto' : 'hidden md:block'}>
                   {item.label ? (
-                    <div className={`p-3 md:p-4 rounded-xl bg-gradient-to-br ${item.color} border border-white/[0.06] text-center`}>
+                    <div className={`p-3 md:p-4 rounded-xl bg-gradient-to-br ${item.color} border border-gray-100 text-center`}>
                       <span className="text-xl md:text-2xl mb-1.5 block">{item.icon}</span>
-                      <p className="text-xs md:text-sm font-medium text-white/70">{item.label}</p>
-                      <p className="text-[9px] md:text-[10px] text-white/30">{item.sub}</p>
+                      <p className="text-xs md:text-sm font-medium text-gray-700">{item.label}</p>
+                      <p className="text-[9px] md:text-[10px] text-gray-400">{item.sub}</p>
                     </div>
                   ) : (
-                    <span className="text-white/15 text-lg">{item.icon}</span>
+                    <span className="text-gray-300 text-lg">{item.icon}</span>
                   )}
                 </div>
               ))}
@@ -518,10 +518,10 @@ export default function ModelsPage() {
       </div>
 
       {/* CTA */}
-      <div className="px-4 md:px-8 py-8 md:py-14 border-t border-white/[0.04]">
+      <div className="px-4 md:px-8 py-8 md:py-14 border-t border-gray-100">
         <div className="max-w-lg mx-auto text-center">
-          <h2 className="text-lg md:text-2xl font-semibold text-white/90 mb-2">Ready to try?</h2>
-          <p className="text-xs md:text-sm text-white/35 mb-6">Start chatting with your own AI model in seconds.</p>
+          <h2 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2">Ready to try?</h2>
+          <p className="text-xs md:text-sm text-gray-500 mb-6">Start chatting with your own AI model in seconds.</p>
           <button
             onClick={() => setCurrentPage('chat')}
             className="px-6 py-3 rounded-xl bg-[#6c5ce7] hover:bg-[#5a4bd6] text-white text-sm font-medium transition-all shadow-lg shadow-[#6c5ce7]/20 hover:shadow-[#6c5ce7]/30"

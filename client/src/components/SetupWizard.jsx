@@ -36,8 +36,8 @@ function StepIndicator({ current, total }) {
             i === current
               ? 'w-6 md:w-8 bg-[#6c5ce7]'
               : i < current
-              ? 'w-3 md:w-4 bg-[#6c5ce7]/50'
-              : 'w-3 md:w-4 bg-white/10'
+              ? 'w-3 md:w-4 bg-[#6c5ce7]/30'
+              : 'w-3 md:w-4 bg-gray-200'
           }`}
         />
       ))}
@@ -56,12 +56,12 @@ function CodeBlock({ children }) {
 
   return (
     <div className="relative group">
-      <pre className="bg-[#0a0a0f] border border-white/[0.06] rounded-xl px-3.5 py-3 md:px-5 md:py-4 font-mono text-xs md:text-sm text-[#a29bfe] overflow-x-auto">
+      <pre className="bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-3 md:px-5 md:py-4 font-mono text-xs md:text-sm text-[#6c5ce7] overflow-x-auto">
         <code>{children}</code>
       </pre>
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 md:top-3 md:right-3 px-2 py-0.5 md:px-2.5 md:py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] md:text-xs text-white/40 hover:text-white/80 hover:bg-white/10 transition-all md:opacity-0 md:group-hover:opacity-100"
+        className="absolute top-2 right-2 md:top-3 md:right-3 px-2 py-0.5 md:px-2.5 md:py-1 rounded-lg bg-white border border-gray-200 text-[10px] md:text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition-all md:opacity-0 md:group-hover:opacity-100"
       >
         {copied ? 'Copied!' : 'Copy'}
       </button>
@@ -71,27 +71,27 @@ function CodeBlock({ children }) {
 
 function StatusCheck({ label, checking, ok, error }) {
   return (
-    <div className="flex items-center gap-3 px-3 py-2.5 md:px-4 md:py-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+    <div className="flex items-center gap-3 px-3 py-2.5 md:px-4 md:py-3 rounded-xl bg-gray-50 border border-gray-100">
       <div className="flex-shrink-0">
         {checking ? (
-          <div className="w-5 h-5 rounded-full border-2 border-[#6c5ce7]/30 border-t-[#6c5ce7] animate-spin" />
+          <div className="w-5 h-5 rounded-full border-2 border-[#6c5ce7]/20 border-t-[#6c5ce7] animate-spin" />
         ) : ok ? (
-          <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
-            <svg className="w-3 h-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+          <div className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center">
+            <svg className="w-3 h-3 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
         ) : error ? (
-          <div className="w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center">
-            <svg className="w-3 h-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+            <svg className="w-3 h-3 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
         ) : (
-          <div className="w-5 h-5 rounded-full bg-white/5 border border-white/10" />
+          <div className="w-5 h-5 rounded-full bg-gray-100 border border-gray-200" />
         )}
       </div>
-      <span className={`text-xs md:text-sm ${ok ? 'text-white/80' : error ? 'text-red-300/80' : 'text-white/40'}`}>
+      <span className={`text-xs md:text-sm ${ok ? 'text-gray-900' : error ? 'text-red-500' : 'text-gray-400'}`}>
         {label}
       </span>
     </div>
@@ -111,10 +111,10 @@ function WelcomeStep() {
       </div>
 
       <div className="space-y-3 animate-fade-in-up opacity-0 delay-200">
-        <h2 className="text-xl md:text-2xl font-semibold text-white tracking-tight">
-          Welcome to <span className="text-[#a29bfe]">BR31</span>
+        <h2 className="text-xl md:text-2xl font-semibold text-gray-900 tracking-tight">
+          Welcome to <span className="text-[#6c5ce7]">BR31</span>
         </h2>
-        <p className="text-sm md:text-base text-white/40 max-w-md mx-auto leading-relaxed px-2">
+        <p className="text-sm md:text-base text-gray-500 max-w-md mx-auto leading-relaxed px-2">
           Run AI models on any machine — GPU server, desktop, or cloud — and chat with them from anywhere. Private, fast, and fully under your control.
         </p>
       </div>
@@ -126,10 +126,10 @@ function WelcomeStep() {
           { icon: '⚡', label: 'Fast', desc: 'Direct WebSocket streaming' },
           { icon: '🌐', label: 'Remote', desc: 'Access models from anywhere' },
         ].map((f) => (
-          <div key={f.label} className="p-3 md:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center">
+          <div key={f.label} className="p-3 md:p-4 rounded-xl bg-white border border-gray-100 shadow-sm text-center">
             <div className="text-base md:text-lg mb-1.5 md:mb-2">{f.icon}</div>
-            <div className="text-[10px] md:text-xs font-medium text-white/70 mb-0.5">{f.label}</div>
-            <div className="text-[9px] md:text-[10px] text-white/30 leading-tight">{f.desc}</div>
+            <div className="text-[10px] md:text-xs font-medium text-gray-700 mb-0.5">{f.label}</div>
+            <div className="text-[9px] md:text-[10px] text-gray-400 leading-tight">{f.desc}</div>
           </div>
         ))}
       </div>
@@ -160,20 +160,20 @@ function OllamaStep() {
   return (
     <div className="space-y-5 md:space-y-6">
       <div className="space-y-3 md:space-y-4 animate-fade-in-up opacity-0">
-        <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-[#6c5ce7]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span className="text-base md:text-lg">1</span>
+        <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-[#6c5ce7]/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-base md:text-lg text-[#6c5ce7]">1</span>
           </div>
           <div className="space-y-2 flex-1 min-w-0">
-            <h4 className="text-sm font-medium text-white/80">Install Ollama</h4>
-            <p className="text-xs text-white/40 leading-relaxed">
+            <h4 className="text-sm font-medium text-gray-900">Install Ollama</h4>
+            <p className="text-xs text-gray-500 leading-relaxed">
               Ollama is the engine that runs AI models locally. Download it from the official website.
             </p>
             <a
               href="https://ollama.ai/download"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-[#a29bfe] hover:text-[#6c5ce7] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs text-[#6c5ce7] hover:text-[#5a4bd6] transition-colors"
             >
               ollama.ai/download
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -183,12 +183,12 @@ function OllamaStep() {
           </div>
         </div>
 
-        <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-[#6c5ce7]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span className="text-base md:text-lg">2</span>
+        <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-[#6c5ce7]/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-base md:text-lg text-[#6c5ce7]">2</span>
           </div>
           <div className="space-y-2 flex-1 min-w-0">
-            <h4 className="text-sm font-medium text-white/80">Or install via terminal</h4>
+            <h4 className="text-sm font-medium text-gray-900">Or install via terminal</h4>
             <CodeBlock>curl -fsSL https://ollama.ai/install.sh | sh</CodeBlock>
           </div>
         </div>
@@ -204,7 +204,7 @@ function OllamaStep() {
         {ollamaOk === false && (
           <button
             onClick={checkOllama}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-white/50 hover:text-white/80 hover:bg-white/[0.06] transition-all"
+            className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
           >
             Check again
           </button>
@@ -244,29 +244,29 @@ function ModelStep() {
   return (
     <div className="space-y-5 md:space-y-6">
       <div className="space-y-2 md:space-y-3 animate-fade-in-up opacity-0">
-        <h4 className="text-sm font-medium text-white/60 uppercase tracking-wider">Pull a model</h4>
-        <p className="text-xs text-white/35 leading-relaxed">
+        <h4 className="text-sm font-medium text-gray-500 uppercase tracking-wider">Pull a model</h4>
+        <p className="text-xs text-gray-400 leading-relaxed">
           Open your terminal and run one of these commands to download a model.
         </p>
       </div>
 
       <div className="space-y-2 animate-fade-in-up opacity-0 delay-100">
         {suggestedModels.map((m) => (
-          <div key={m.name} className="group p-3 md:p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all">
+          <div key={m.name} className="group p-3 md:p-3.5 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2.5 md:gap-3 min-w-0">
-                <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-[#6c5ce7]/10 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#a29bfe]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-[#6c5ce7]/5 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#6c5ce7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                   </svg>
                 </div>
                 <div className="min-w-0">
-                  <div className="text-sm font-medium text-white/80 truncate">{m.name}</div>
-                  <div className="text-[10px] text-white/30 truncate">{m.desc} · {m.size}</div>
+                  <div className="text-sm font-medium text-gray-900 truncate">{m.name}</div>
+                  <div className="text-[10px] text-gray-400 truncate">{m.desc} · {m.size}</div>
                 </div>
               </div>
               {models.some(installed => installed.name === m.name) && (
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex-shrink-0">
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex-shrink-0">
                   Installed
                 </span>
               )}
@@ -280,10 +280,10 @@ function ModelStep() {
 
       {models.length > 0 && (
         <div className="space-y-2 animate-fade-in-up opacity-0 delay-300">
-          <h4 className="text-xs font-medium text-white/40 uppercase tracking-wider">Your installed models</h4>
+          <h4 className="text-xs font-medium text-gray-400 uppercase tracking-wider">Your installed models</h4>
           <div className="flex flex-wrap gap-2">
             {models.map((m) => (
-              <span key={m.name} className="inline-flex items-center gap-1.5 px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg bg-[#6c5ce7]/10 border border-[#6c5ce7]/20 text-[10px] md:text-xs text-[#a29bfe]">
+              <span key={m.name} className="inline-flex items-center gap-1.5 px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg bg-[#6c5ce7]/5 border border-[#6c5ce7]/10 text-[10px] md:text-xs text-[#6c5ce7]">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 {m.name}
               </span>
@@ -294,13 +294,13 @@ function ModelStep() {
 
       {loading && (
         <div className="text-center py-4">
-          <div className="w-5 h-5 mx-auto rounded-full border-2 border-[#6c5ce7]/30 border-t-[#6c5ce7] animate-spin" />
+          <div className="w-5 h-5 mx-auto rounded-full border-2 border-[#6c5ce7]/20 border-t-[#6c5ce7] animate-spin" />
         </div>
       )}
 
       {!loading && models.length === 0 && (
-        <div className="p-3 md:p-4 rounded-xl bg-amber-500/5 border border-amber-500/10">
-          <p className="text-xs text-amber-300/60 text-center">
+        <div className="p-3 md:p-4 rounded-xl bg-amber-50 border border-amber-200">
+          <p className="text-xs text-amber-600 text-center">
             No models found. Pull one using the commands above, then continue.
           </p>
         </div>
@@ -308,7 +308,7 @@ function ModelStep() {
 
       <button
         onClick={fetchModels}
-        className="w-full px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-white/50 hover:text-white/80 hover:bg-white/[0.06] transition-all"
+        className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
       >
         Refresh models
       </button>
@@ -320,31 +320,31 @@ function ConnectStep() {
   const isConnected = useChatStore((s) => s.isConnected)
 
   const architecture = [
-    { label: 'Your Browser', icon: '🌐', color: 'from-blue-500/20 to-blue-600/20' },
+    { label: 'Your Browser', icon: '🌐', color: 'from-blue-50 to-blue-100' },
     { label: 'WebSocket', icon: '↕️', color: '' },
-    { label: 'Gateway Server', icon: '🔀', color: 'from-[#6c5ce7]/20 to-purple-600/20' },
+    { label: 'Gateway Server', icon: '🔀', color: 'from-[#6c5ce7]/5 to-purple-50' },
     { label: 'HTTP Stream', icon: '↕️', color: '' },
-    { label: 'AI Server', icon: '🧠', color: 'from-emerald-500/20 to-emerald-600/20' },
+    { label: 'AI Server', icon: '🧠', color: 'from-emerald-50 to-emerald-100' },
     { label: '', icon: '↕️', color: '' },
-    { label: 'Ollama + Model', icon: '🤖', color: 'from-amber-500/20 to-amber-600/20' },
+    { label: 'Ollama + Model', icon: '🤖', color: 'from-amber-50 to-amber-100' },
   ]
 
   return (
     <div className="space-y-5 md:space-y-6">
       <div className="animate-fade-in-up opacity-0">
-        <div className="p-4 md:p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-3">
-          <h4 className="text-sm font-medium text-white/70">How it works</h4>
+        <div className="p-4 md:p-5 rounded-xl bg-white border border-gray-100 shadow-sm space-y-3">
+          <h4 className="text-sm font-medium text-gray-700">How it works</h4>
           <div className="flex flex-col items-center gap-1">
             {architecture.map((item, i) => (
               <div key={i} className={item.label ? 'w-full' : ''}>
                 {item.label ? (
-                  <div className={`flex items-center gap-2.5 md:gap-3 px-3 py-2 md:px-4 md:py-2.5 rounded-lg ${item.color ? `bg-gradient-to-r ${item.color}` : ''} border border-white/[0.06]`}>
+                  <div className={`flex items-center gap-2.5 md:gap-3 px-3 py-2 md:px-4 md:py-2.5 rounded-lg ${item.color ? `bg-gradient-to-r ${item.color}` : ''} border border-gray-100`}>
                     <span className="text-sm md:text-base">{item.icon}</span>
-                    <span className="text-[11px] md:text-xs text-white/60">{item.label}</span>
+                    <span className="text-[11px] md:text-xs text-gray-700">{item.label}</span>
                   </div>
                 ) : (
                   <div className="flex justify-center py-0.5">
-                    <span className="text-white/20 text-xs">{item.icon}</span>
+                    <span className="text-gray-300 text-xs">{item.icon}</span>
                   </div>
                 )}
               </div>
@@ -354,15 +354,15 @@ function ConnectStep() {
       </div>
 
       <div className="space-y-3 animate-fade-in-up opacity-0 delay-200">
-        <h4 className="text-xs font-medium text-white/40 uppercase tracking-wider">Start the servers</h4>
+        <h4 className="text-xs font-medium text-gray-400 uppercase tracking-wider">Start the servers</h4>
 
         <div className="space-y-2">
-          <div className="p-2.5 md:p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-            <div className="text-[10px] text-white/30 mb-1.5 font-medium uppercase tracking-wider">Terminal 1 — AI Server</div>
+          <div className="p-2.5 md:p-3 rounded-xl bg-white border border-gray-100 shadow-sm">
+            <div className="text-[10px] text-gray-400 mb-1.5 font-medium uppercase tracking-wider">Terminal 1 — AI Server</div>
             <CodeBlock>cd ai-server && python run.py</CodeBlock>
           </div>
-          <div className="p-2.5 md:p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-            <div className="text-[10px] text-white/30 mb-1.5 font-medium uppercase tracking-wider">Terminal 2 — Gateway</div>
+          <div className="p-2.5 md:p-3 rounded-xl bg-white border border-gray-100 shadow-sm">
+            <div className="text-[10px] text-gray-400 mb-1.5 font-medium uppercase tracking-wider">Terminal 2 — Gateway</div>
             <CodeBlock>cd server && npm start</CodeBlock>
           </div>
         </div>
@@ -404,27 +404,27 @@ export default function SetupWizard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center p-4 md:p-6">
+    <div className="min-h-screen bg-[#fafafa] flex items-center justify-center p-4 md:p-6">
       {/* Background glow */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[200px] md:h-[400px] bg-[#6c5ce7]/[0.04] rounded-full blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[200px] md:h-[400px] bg-[#6c5ce7]/[0.06] rounded-full blur-[80px] md:blur-[120px]" />
       </div>
 
       <div className="relative w-full max-w-lg">
         {/* Step indicator */}
         <div className="flex items-center justify-between mb-6 md:mb-8">
           <StepIndicator current={currentStep} total={steps.length} />
-          <span className="text-[10px] text-white/20 font-mono">
+          <span className="text-[10px] text-gray-300 font-mono">
             {currentStep + 1}/{steps.length}
           </span>
         </div>
 
         {/* Step header */}
         <div className="mb-5 md:mb-6">
-          <h3 className="text-base md:text-lg font-semibold text-white/90 tracking-tight">
+          <h3 className="text-base md:text-lg font-semibold text-gray-900 tracking-tight">
             {steps[currentStep].title}
           </h3>
-          <p className="text-xs md:text-sm text-white/35 mt-1">
+          <p className="text-xs md:text-sm text-gray-500 mt-1">
             {steps[currentStep].subtitle}
           </p>
         </div>
@@ -441,7 +441,7 @@ export default function SetupWizard() {
             className={`px-3 py-2 md:px-5 md:py-2.5 rounded-xl text-sm transition-all ${
               isFirst
                 ? 'opacity-0 pointer-events-none'
-                : 'text-white/40 hover:text-white/70 hover:bg-white/[0.04]'
+                : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
             }`}
           >
             Back
@@ -451,7 +451,7 @@ export default function SetupWizard() {
             {!isLast && (
               <button
                 onClick={completeSetup}
-                className="px-3 py-2 md:px-4 md:py-2.5 rounded-xl text-[11px] md:text-xs text-white/25 hover:text-white/50 transition-all"
+                className="px-3 py-2 md:px-4 md:py-2.5 rounded-xl text-[11px] md:text-xs text-gray-400 hover:text-gray-500 transition-all"
               >
                 Skip
               </button>

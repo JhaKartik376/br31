@@ -71,11 +71,11 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen bg-[#0a0a0f] text-white/90">
+    <div className="flex h-screen bg-[#fafafa] text-gray-900">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-30 md:hidden"
+          className="fixed inset-0 bg-black/20 z-30 md:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
