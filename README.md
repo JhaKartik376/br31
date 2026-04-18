@@ -1,8 +1,8 @@
-# AetherLink
+# BR31
 
 > Connect to your own AI models running anywhere — use them like they're local.
 
-**[Live Demo](https://jhakartik376.github.io/aetherlink/)**
+**[Live Demo](https://jhakartik376.github.io/br31/)**
 
 ## Why I Built This
 
@@ -10,7 +10,7 @@ I got tired of relying on cloud AI services that cost money, throttle usage, and
 
 Most people think running local AI means sitting in front of the machine it's installed on. That felt like an unnecessary limitation. Your GPU server is sitting at home — why shouldn't you be able to chat with it from your laptop at a cafe, or your phone on the couch?
 
-AetherLink is my answer to that. It's a bridge between wherever your models live and wherever you are. No API keys to manage, no usage limits, no data leaving your network. Just a clean interface connected to your own AI.
+BR31 is my answer to that. It's a bridge between wherever your models live and wherever you are. No API keys to manage, no usage limits, no data leaving your network. Just a clean interface connected to your own AI.
 
 And for people who don't have a GPU or just want to try it out, it also supports Groq's free cloud API as a fallback — so anyone can use it out of the box.
 
@@ -55,8 +55,8 @@ Ollama (local) or Groq API (cloud)
 **1. Clone the repo**
 
 ```bash
-git clone https://github.com/JhaKartik376/aetherlink.git
-cd aetherlink
+git clone https://github.com/JhaKartik376/br31.git
+cd br31
 ```
 
 **2. Set up the backend**
@@ -140,7 +140,7 @@ To deploy your own:
 ## Project Structure
 
 ```
-aetherlink/
+br31/
 ├── client/                  # React frontend
 │   ├── src/
 │   │   ├── components/      # UI components + setup wizard

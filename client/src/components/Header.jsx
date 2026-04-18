@@ -18,7 +18,8 @@ function Header() {
         </button>
 
         {/* Logo — mobile only */}
-        <span className="md:hidden text-sm font-semibold text-white/80 tracking-tight">AetherLink</span>
+        <span className="md:hidden text-sm">🤖</span>
+        <span className="md:hidden text-sm font-bold text-white/80 tracking-tight font-mono">BR31</span>
 
         {/* Model badge — desktop */}
         <h2 className="hidden md:block text-xs font-medium text-white/30 uppercase tracking-wider">Model</h2>
@@ -40,7 +41,7 @@ function Header() {
               : 'bg-red-400/[0.07] text-red-400/80 border border-red-400/10'
           }`}
         >
-          {isConnected ? 'Online' : 'Offline'}
+          {isConnected ? '⚡ Online' : '💤 Offline'}
         </span>
       </div>
     </header>

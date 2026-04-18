@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import ChatBox from './components/ChatBox'
 import MessageInput from './components/MessageInput'
+import ModelsPage from './components/ModelsPage'
 
 function App() {
   const addMessage = useChatStore((state) => state.addMessage)
@@ -15,6 +16,7 @@ function App() {
   const setupComplete = useChatStore((state) => state.setupComplete)
   const sidebarOpen = useChatStore((state) => state.sidebarOpen)
   const setSidebarOpen = useChatStore((state) => state.setSidebarOpen)
+  const currentPage = useChatStore((state) => state.currentPage)
 
   useEffect(() => {
     const handleMessage = (data) => {
@@ -78,7 +80,7 @@ function App() {
         />
       )}
 
-      {/* Sidebar — hidden on mobile, slide-in when open */}
+      {/* Sidebar */}
       <div className={`
         fixed inset-y-0 left-0 z-40 transform transition-transform duration-300 ease-in-out
         md:relative md:translate-x-0 md:z-auto
@@ -89,8 +91,14 @@ function App() {
 
       <main className="flex-1 flex flex-col min-w-0">
         <Header />
-        <ChatBox />
-        <MessageInput />
+        {currentPage === 'models' ? (
+          <ModelsPage />
+        ) : (
+          <>
+            <ChatBox />
+            <MessageInput />
+          </>
+        )}
       </main>
     </div>
   )

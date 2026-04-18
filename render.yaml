@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: aetherlink-api
+    name: br31-api
     runtime: python
     rootDir: ai-server
     buildCommand: pip install -r requirements.txt

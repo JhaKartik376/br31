@@ -1,4 +1,4 @@
-"""AetherLink AI Server — FastAPI backend with WebSocket support."""
+"""BR31 AI Server — FastAPI backend with WebSocket support."""
 
 import json
 import os
@@ -19,7 +19,7 @@ from model import (
     ollama_available,
 )
 
-app = FastAPI(title="AetherLink", version="0.1.0")
+app = FastAPI(title="BR31", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,

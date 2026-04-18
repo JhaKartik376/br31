@@ -45,7 +45,7 @@ function MessageInput() {
                 ? 'Waiting for connection...'
                 : isStreaming
                 ? 'AI is responding...'
-                : 'Message AetherLink...'
+                : 'Message BR31...'
             }
             className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-3.5 py-2.5 md:px-4 md:py-3 text-sm text-white/90 placeholder-white/20 outline-none focus:border-[#6c5ce7]/40 focus:ring-1 focus:ring-[#6c5ce7]/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
           />

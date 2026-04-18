@@ -4,9 +4,10 @@ const useChatStore = create((set) => ({
   messages: [],
   isConnected: false,
   isStreaming: false,
-  setupComplete: localStorage.getItem('aetherlink-setup-complete') === 'true',
+  setupComplete: localStorage.getItem('br31-setup-complete') === 'true',
   currentStep: 0,
   sidebarOpen: false,
+  currentPage: 'chat', // 'chat' | 'models'
 
   addMessage: (message) =>
     set((state) => ({
@@ -27,16 +28,17 @@ const useChatStore = create((set) => ({
   setStreaming: (isStreaming) => set({ isStreaming }),
   setSidebarOpen: (sidebarOpen) => set({ sidebarOpen }),
   toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+  setCurrentPage: (page) => set({ currentPage: page, sidebarOpen: false }),
 
   setCurrentStep: (step) => set({ currentStep: step }),
 
   completeSetup: () => {
-    localStorage.setItem('aetherlink-setup-complete', 'true')
+    localStorage.setItem('br31-setup-complete', 'true')
     set({ setupComplete: true })
   },
 
   resetSetup: () => {
-    localStorage.removeItem('aetherlink-setup-complete')
+    localStorage.removeItem('br31-setup-complete')
     set({ setupComplete: false, currentStep: 0 })
   },
 }))

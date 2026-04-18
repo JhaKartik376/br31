@@ -6,7 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 const steps = [
   {
     id: 'welcome',
-    title: 'Welcome to AetherLink',
+    title: 'Welcome to BR31',
     subtitle: 'Your private bridge to AI models running anywhere.',
   },
   {
@@ -22,7 +22,7 @@ const steps = [
   {
     id: 'connect',
     title: 'Connect & Chat',
-    subtitle: 'AetherLink bridges your browser to the model.',
+    subtitle: 'BR31 bridges your browser to the model.',
   },
 ]
 
@@ -101,20 +101,18 @@ function StatusCheck({ label, checking, ok, error }) {
 function WelcomeStep() {
   return (
     <div className="text-center space-y-6 md:space-y-8">
-      {/* Logo */}
+      {/* Robot Mascots */}
       <div className="animate-fade-in-up opacity-0">
-        <div className="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-2xl bg-gradient-to-br from-[#6c5ce7] to-[#a29bfe] p-[1px]">
-          <div className="w-full h-full rounded-2xl bg-[#12121a] flex items-center justify-center">
-            <svg className="w-8 h-8 md:w-10 md:h-10 text-[#a29bfe]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-            </svg>
-          </div>
+        <div className="flex items-center justify-center gap-2 text-4xl md:text-5xl">
+          <span className="animate-bounce [animation-delay:0ms] [animation-duration:2s]">🤖</span>
+          <span className="text-2xl md:text-3xl text-[#a29bfe] animate-pulse">⚡</span>
+          <span className="animate-bounce [animation-delay:300ms] [animation-duration:2s]">🧠</span>
         </div>
       </div>
 
       <div className="space-y-3 animate-fade-in-up opacity-0 delay-200">
         <h2 className="text-xl md:text-2xl font-semibold text-white tracking-tight">
-          Welcome to <span className="text-[#a29bfe]">AetherLink</span>
+          Welcome to <span className="text-[#a29bfe]">BR31</span>
         </h2>
         <p className="text-sm md:text-base text-white/40 max-w-md mx-auto leading-relaxed px-2">
           Run AI models on any machine — GPU server, desktop, or cloud — and chat with them from anywhere. Private, fast, and fully under your control.
